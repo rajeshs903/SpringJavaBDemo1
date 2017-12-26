@@ -12,8 +12,6 @@ public class DrawinhApp {
 		
 		BeanFactory factory=new XmlBeanFactory(new FileSystemResource("spring.xml"));
 		Triangle triangle =(Triangle) factory.getBean("triangle");
-		
-		
 		triangle.draw();
 
 		
