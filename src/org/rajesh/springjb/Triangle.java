@@ -1,9 +1,17 @@
 package org.rajesh.springjb;
 
 public class Triangle {
+	private String type;
 
-	public void draw()
-	{
-		System.out.println("Triangle drawn");
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public void draw() {
+		System.out.println("Triangle drawn as "+type);
 	}
 }
