@@ -3,7 +3,9 @@
 
 <beans>
 	<bean id="triangle" class="org.rajesh.springjb.Triangle" >
-	<property name="type" value="equilateral"/>
+	<constructor-arg type="java.lang.String" value="equilateral" />
+	<constructor-arg value="20" type="int"/>
+	<!-- <property name="type" value="equilateral"/> setter injection -->
 	</bean>
 	
 </beans>
