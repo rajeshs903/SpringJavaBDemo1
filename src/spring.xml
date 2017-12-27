@@ -7,9 +7,15 @@
 	<!-- <constructor-arg value="20" type="int"/>constructor injection -->
 	<!-- <property name="type" value="equilateral"/> setter injection -->
 	
-	<property name="pointA" ref="zeroPoint"></property>
-	<property name="pointB" ref="Point2"></property>
-	<property name="pointC" ref="Point3"></property>
+		<property name="points">
+			<list>
+				<ref bean="zeroPoint"/>
+				<ref bean="Point2"/>
+				<ref bean="Point3"/>
+			</list>
+		</property>
+	
+	
 	</bean>
 	
 	
