@@ -3,9 +3,30 @@
 
 <beans>
 	<bean id="triangle" class="org.rajesh.springjb.Triangle" >
-	<constructor-arg type="java.lang.String" value="equilateral" />
-	<constructor-arg value="20" type="int"/>
+	<!-- <constructor-arg type="java.lang.String" value="equilateral" /> -->
+	<!-- <constructor-arg value="20" type="int"/>constructor injection -->
 	<!-- <property name="type" value="equilateral"/> setter injection -->
+	
+	<property name="pointA" ref="zeroPoint"></property>
+	<property name="pointB" ref="Point2"></property>
+	<property name="pointC" ref="Point3"></property>
 	</bean>
+	
+	
+	<bean id="zeroPoint" class="org.rajesh.springjb.Point">
+		<property name="x" value="0"></property>
+		<property name="y" value="0"></property>
+	</bean>
+
+	<bean id="Point2" class="org.rajesh.springjb.Point">
+		<property name="x" value="-20"></property>
+		<property name="y" value="0"></property>
+	</bean>
+	
+	<bean id="Point3" class="org.rajesh.springjb.Point">
+		<property name="x" value="20"></property>
+		<property name="y" value="0"></property>
+	</bean>
+	
 	
 </beans>
