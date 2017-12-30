@@ -3,36 +3,36 @@
 
 <beans>
 	<bean id="triangle" class="org.rajesh.springjb.Triangle" >
-	<!-- <constructor-arg type="java.lang.String" value="equilateral" /> -->
-	<!-- <constructor-arg value="20" type="int"/>constructor injection -->
-	<!-- <property name="type" value="equilateral"/> setter injection -->
 	
-		<property name="points">
-			<list>
-				<ref bean="zeroPoint"/>
-				<ref bean="Point2"/>
-				<ref bean="Point3"/>
-			</list>
-		</property>
+	<!-- if we use point2 and point3 only inside the triangle then it is better it use as inner beans i.e declaring inside the triangle bean itself 
+		and also if you use inner bean then there is no need of id mentioning explicitly-->
+	<!-- There is always three ways referencing the bean declared outside. 
+	1) by name: 
+	2) by id: recommended . since spring provides the validation by checking if any other ids declared with that name already, if id name is already present then it will throw error.
+	3) by alias-name: alias name is the name given for id alternatively
+	 -->
+	<property name="pointA">
+		<ref bean="zeroPoint" />
+	</property>
 	
-	
+	<property name="pointB">
+		<bean class="org.rajesh.springjb.Point">
+		<property name="x" value="-20"></property>
+		<property name="y" value="0"></property>
 	</bean>
-	
+	</property>
+	<property name="pointC" >
+		<bean  class="org.rajesh.springjb.Point">
+		<property name="x"  value="20"></property>
+		<property name="y" value="0"></property>
+	</bean>
+	</property>
+	</bean>
 	
 	<bean id="zeroPoint" class="org.rajesh.springjb.Point">
 		<property name="x" value="0"></property>
 		<property name="y" value="0"></property>
 	</bean>
 
-	<bean id="Point2" class="org.rajesh.springjb.Point">
-		<property name="x" value="-20"></property>
-		<property name="y" value="0"></property>
-	</bean>
-	
-	<bean id="Point3" class="org.rajesh.springjb.Point">
-		<property name="x" value="20"></property>
-		<property name="y" value="0"></property>
-	</bean>
-	
 	
 </beans>
