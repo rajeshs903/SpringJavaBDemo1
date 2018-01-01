@@ -9,10 +9,8 @@ import org.springframework.core.io.FileSystemResource;
 public class DrawinhApp {
 
 	public static void main(String[] args) {
-		//Triangle triangle=new Triangle(); // normal way of creating objects
 		
 		
-		//BeanFactory factory=new XmlBeanFactory(new FileSystemResource("spring.xml"));
 		ApplicationContext context=new ClassPathXmlApplicationContext("spring.xml");
 		
 		Triangle triangle =(Triangle) context.getBean("triangle");

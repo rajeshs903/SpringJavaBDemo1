@@ -1,15 +1,17 @@
 package org.rajesh.springjb;
 
-import java.util.List;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-public class Triangle {
-	
+public class Triangle implements ApplicationContextAware,BeanNameAware{
+	//When spring instantiates beans, it looks for a couple of interfaces like ApplicationContextAware and InitializingBean. If they are found, the methods are invoked
 	
 	private Point pointA;
 	private Point pointB;
 	private Point pointC;
+	private ApplicationContext context;
 
 	public Point getPointA() {
 		return pointA;
@@ -42,4 +44,18 @@ public class Triangle {
 				System.out.println("Point A is x= "+pointC.getX()+" and y="+pointC.getY());
 		
 	}
+
+	@Override
+	public void setApplicationContext(ApplicationContext context) throws BeansException {
+		this.context=context;
+		
+	}
+
+	@Override
+	public void setBeanName(String beanName) {
+		System.out.println("bean name is "+beanName);
+		
+	}
+
+	
 }
