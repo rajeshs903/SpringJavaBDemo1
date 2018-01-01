@@ -2,22 +2,13 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 
 <beans>
-	<bean id="triangleParentWithA" class="org.rajesh.springjb.Triangle" abstract="true"> <!-- if we dont want to create pointA instance directly but let it use as a template for child bean definations then user abstract -->
-		<property name="points">
-			<list>
-				<ref bean="pointA" />  <!-- here we adding point A to the list of points -->
-			</list>
-		</property>
+	<bean id="triangle" class="org.rajesh.springjb.Triangle" init-method="myInit" destroy-method="myDestroy" >
+	
+	<property name="pointA" ref="pointA"></property>
+	<property name="pointB" ref="pointB"></property>
+	<property name="pointC" ref="pointC"></property>
 	</bean>
-
-
-	<bean id="triangle" class="org.rajesh.springjb.Triangle" parent="triangleParentWithA">
-		<property name="points">
-			<list merge="true">
-				<ref bean="pointB" />	<!-- Here adding point B to the list of points .. by default it is overrding the point A of the parent here, unless we specifically mention the list to " merge " it , in case of collections only -->
-			</list>
-		</property>
-	</bean>
+	
 	<bean id="pointA" class="org.rajesh.springjb.Point">
 		<property name="x" value="0"></property>
 		<property name="y" value="0"></property>

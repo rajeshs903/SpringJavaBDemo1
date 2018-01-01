@@ -1,18 +1,15 @@
 package org.rajesh.springjb;
 
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.io.FileSystemResource;
 
 public class DrawinhApp {
 
 	public static void main(String[] args) {
 		
 		
-		ApplicationContext context=new ClassPathXmlApplicationContext("spring.xml");
-		
+		AbstractApplicationContext context=new ClassPathXmlApplicationContext("spring.xml");
+		context.registerShutdownHook(); // to close the context when it is done, applicable only for desktop application like this project
 		Triangle triangle =(Triangle) context.getBean("triangle");
 		triangle.draw();
 
