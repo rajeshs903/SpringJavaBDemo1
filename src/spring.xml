@@ -2,34 +2,21 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 
 <beans>
-	<bean id="triangle" class="org.rajesh.springjb.Triangle" >
-	<!-- <constructor-arg type="java.lang.String" value="equilateral" /> -->
-	<!-- <constructor-arg value="20" type="int"/>constructor injection -->
-	<!-- <property name="type" value="equilateral"/> setter injection -->
-	
-		<property name="points">
-			<list>
-				<ref bean="zeroPoint"/>
-				<ref bean="Point2"/>
-				<ref bean="Point3"/>
-			</list>
-		</property>
-	
-	
+	<bean id="triangle" class="org.rajesh.springjb.Triangle" autowire="byName" >
 	</bean>
-	
-	
-	<bean id="zeroPoint" class="org.rajesh.springjb.Point">
+	<!-- "byName" will work here condition is pointA from bean should be matched with bean id ,then spring will detect the bean -->
+	<!-- byType will work if a bean has single ref variable of unique type.. here in this case pointA, pointB,pointC are having same type so for spring it is not possible to detech which one is to be wired -->
+	<bean id="pointA" class="org.rajesh.springjb.Point">
 		<property name="x" value="0"></property>
 		<property name="y" value="0"></property>
 	</bean>
 
-	<bean id="Point2" class="org.rajesh.springjb.Point">
+	<bean id="pointB" class="org.rajesh.springjb.Point">
 		<property name="x" value="-20"></property>
 		<property name="y" value="0"></property>
 	</bean>
 	
-	<bean id="Point3" class="org.rajesh.springjb.Point">
+	<bean id="pointC" class="org.rajesh.springjb.Point">
 		<property name="x" value="20"></property>
 		<property name="y" value="0"></property>
 	</bean>
